@@ -47,6 +47,18 @@ class BinaryTree:
                 ans.append(node.key)
         helper(root)
         print(ans)
+        
+    def hash_path_sum(root, target_sum):
+        def helper(node, total):
+            if not node:
+                return False
+            elif not node.left and not node.ritht:
+                if total + node.key == target_sum:
+                    return True
+                else:
+                    return helper(node.left, total + node.val) or helper(node.right, total + node.val)
+        if root:
+            return helper(root, 0)
 
     def Bfs(sefl, root):
         q = deque([root])
