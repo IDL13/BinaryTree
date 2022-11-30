@@ -58,6 +58,15 @@ def hash_path_sum(root, target_sum):
                 return helper(node.left, total + node.val) or helper(node.right, total + node.val)
     if root:
         return helper(root, 0)
+    
+def maxDepth(root):
+    def dfs(node, currDepth):
+        if node is None:
+            return currDepth
+        else:
+            return max(dfs(node.left, currDepth + 1), dfs(node.right, currDepth + 1))
+    res = dfs(root, 0)
+    print(res)
 
 def Bfs(root):
     q = deque([root])
