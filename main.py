@@ -82,6 +82,21 @@ def Bfs(root):
                 q.append(cur.right)
         levels.append(level)
     print(levels)
+    
+def Dfs(root):
+    ans = []
+    def helper(node, path):
+        path += str(node.key) + '->'
+        if not node.left and not node.right:
+            ans.append(path[:-2])
+            return
+        if node.left:
+            helper(node.left, path)
+        if node.right:
+            helper(node.right, path)
+
+    helper(root, '')
+    print(ans)
         
 tree = Node(8)
 insert_tree(tree, Node(3))
@@ -104,6 +119,8 @@ print('\n')
 
 Bfs(tree)
 print('\n')
+
+Dfs(tree)
 
 
 
