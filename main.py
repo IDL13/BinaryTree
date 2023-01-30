@@ -97,6 +97,19 @@ def Dfs(root):
 
     helper(root, '')
     print(ans)
+    
+    
+def dfs(root):
+    def helper(node):
+        if node:
+            node.left, node.right = node.right, node.left
+                if node.left:
+                    helper(node.left)
+                if node.right:
+                    helper(node.right)
+        
+        helper(root)
+        return root
         
 tree = Node(8)
 insert_tree(tree, Node(3))
